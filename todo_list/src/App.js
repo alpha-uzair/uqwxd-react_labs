@@ -28,6 +28,12 @@ const App = () => {
   }
   
   // Add the deleteToDo code here
+  function deleteToDo(id){
+    //filtering the todos and removing the todo with the id (id is passed as a parameter, filter returns an array of todos with the id not equal to the id passed)
+    let updatedTodos=[...todos].filter((todo)=>todo.id!==id);
+    //updating the state after removing the todo
+    setTodos(updatedTodos);
+  }
 
   
   // Add the toggleComplete code here
@@ -50,7 +56,7 @@ value={todo}
 <button type ="submit">Add Todo</button>
 </form>
 {todos.map((todo)=><div className="todo" key={todo.id}>
-  <div>{todo.text}</div>
+  <div>{todo.text}<button onClick={()=>deleteToDo(todo.id)}>Delete</button></div>
 </div>)}
 </div>
 );
